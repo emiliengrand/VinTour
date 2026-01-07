@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-01-05T14:55:28.518594Z",
+  "source_gtfs_zip": "gtfs.zip (fourni par l'utilisateur)",
+  "notes": [
+    "Horaires = théoriques GTFS (pas de temps réel).",
+    "Pour du temps réel, il faut GTFS-RT ou une source GPS."
+  ]
+}

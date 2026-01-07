@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Rejoindre Tadao vin'tour </title>
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./static/style.css" />
+</head>
+<body>
+  <div id="map" aria-label="Carte"></div>
+
+  <header class="maps-top">
+    <div class="maps-search">
+      <button id="btnLocate" class="icon-btn" aria-label="Me localiser" title="Me localiser">📍</button>
+      <div class="search-main">
+        <div class="search-title">Aller au tadao vin'tour !</div>
+        <div id="busLine" class="search-sub">Destination :</div>
+      </div>
+      <button id="btnRecalc" class="icon-btn" aria-label="Recalculer" title="Recalculer" disabled>🧭</button>
+    </div>
+  </header>
+
+  <section id="sheet" class="sheet sheet--mid" aria-label="Panneau itinéraires">
+    <div id="sheetHandle" class="sheet-handle" title="Agrandir / réduire">
+      <div class="sheet-grip"></div>
+    </div>
+
+    <div class="sheet-content">
+      <div class="sheet-row">
+        <div class="tabs">
+          <button id="tabList" class="tab tab--active">Itinéraires</button>
+          <button id="tabDetail" class="tab" disabled>Détails</button>
+        </div>
+      </div>
+
+      <div id="status" class="status">Appuie sur 📍 pour trouver des itinéraires.</div>
+
+      <div id="listView" class="view">
+        <div id="routes" class="routes"></div>
+      </div>
+
+      <div id="detailView" class="view" style="display:none">
+        <div class="detail-head">
+          <button id="btnBack" class="btn-back">←</button>
+          <div>
+            <div id="detailTitle" class="detail-title">Détails</div>
+            <div id="detailSub" class="detail-sub muted">—</div>
+          </div>
+        </div>
+        <div id="steps" class="steps"></div>
+      </div>
+
+   
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+  <script src="./static/app.js"></script>
+</body>
+</html>
