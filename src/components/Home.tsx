@@ -21,7 +21,7 @@ export default function Home({ navigate }: HomeProps) {
           Vinted descend du web et monte dans le bus.
         </h1>
         <p className="text-gray-600 mb-6">
-          Le premier Pop-up store itinérant du Bassin Minier. Achetez, vendez, essayez. 
+          Le premier Pop-up store itinérant du Bassin Minier. Achetez, vendez, essayez.
           0€ de frais de port. 0 colis à faire.
         </p>
         <button
@@ -68,67 +68,10 @@ export default function Home({ navigate }: HomeProps) {
         </div>
       </section>
 
-      {/* Section 3 - Comment ça marche */}
-      <section className="p-6">
-        <h2 className="text-2xl mb-6 text-center">Comment ça marche ?</h2>
-        
-        <div className="grid grid-cols-1 gap-6">
-          {/* Acheteurs */}
-          <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="font-medium mb-4 text-cyan-600">Pour ceux qui CHINENT (Acheteurs)</h3>
-            <ol className="space-y-3">
-              <li className="flex gap-3">
-                <span className="font-medium">1.</span>
-                <div>
-                  <span className="font-medium">Repère :</span> Regarde sur l'app les articles dispos dans le bus.
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-medium">2.</span>
-                <div>
-                  <span className="font-medium">Réserve :</span> Bloque l'article gratuitement via le 'Click & Try'.
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-medium">3.</span>
-                <div>
-                  <span className="font-medium">Essaie :</span> Viens au bus, passe en cabine et repars avec ton look.
-                </div>
-              </li>
-            </ol>
-          </div>
-
-          {/* Vendeurs */}
-          <div className="border border-gray-200 rounded-lg p-4">
-            <h3 className="font-medium mb-4 text-yellow-500">Pour ceux qui TRIENT (Vendeurs)</h3>
-            <ol className="space-y-3">
-              <li className="flex gap-3">
-                <span className="font-medium">1.</span>
-                <div>
-                  <span className="font-medium">Scanne :</span> Crée ton annonce en 3 clics et génère ton QR Code.
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-medium">2.</span>
-                <div>
-                  <span className="font-medium">Dépose :</span> Viens au bus, on scanne ton code, tu laisses le vêtement (sans colis !).
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="font-medium">3.</span>
-                <div>
-                  <span className="font-medium">Encaisse :</span> Récupère du cash immédiat ou un crédit Vinted.
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
       {/* Section 4 - Live Tracker résumé */}
       <section className="p-6 bg-gray-50">
         <h2 className="text-xl mb-4">Le Vinted Tour passe chez vous.</h2>
-        
+
         <div className="space-y-3 mb-4">
           <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -165,10 +108,10 @@ export default function Home({ navigate }: HomeProps) {
       <section className="p-6">
         <h2 className="text-2xl mb-4">Plus qu'un bus, une solution anti-inflation.</h2>
         <p className="text-gray-600 mb-4">
-          En partenariat avec le réseau Tadao, nous rapprochons la seconde main de ceux qui en ont besoin. 
+          En partenariat avec le réseau Tadao, nous rapprochons la seconde main de ceux qui en ont besoin.
           Moins de camions de livraison sur les routes, plus de pouvoir d'achat dans votre poche.
         </p>
-        
+
         <div className="flex items-center justify-center gap-4 py-4 bg-gray-50 rounded-lg">
           <span className="font-medium text-sm">Vinted</span>
           <span className="text-gray-400">×</span>
@@ -181,13 +124,13 @@ export default function Home({ navigate }: HomeProps) {
       {/* Footer */}
       <footer className="p-6 bg-black text-white text-center">
         <p className="mb-4 italic">Le style n'a pas de prix, ni de frontière.</p>
-        
+
         <div className="flex justify-center gap-4 mb-4 text-sm">
           <button className="underline">Télécharger l'App</button>
           <button className="underline">Devenir Bénévole</button>
           <button onClick={() => navigate('faq')} className="underline">FAQ</button>
         </div>
-        
+
         <div className="flex justify-center gap-6 text-sm">
           <button>Instagram</button>
           <button>TikTok</button>

@@ -22,8 +22,7 @@ export default function DesktopNav({ currentScreen, navigate }: DesktopNavProps)
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-bold">Vinted Bus</h1>
-          <span className="text-sm text-gray-600 hidden xl:block">Bassin Minier</span>
+          <h1 className="text-2xl font-bold">Vin'Tour</h1>
         </div>
 
         {/* Navigation Items */}

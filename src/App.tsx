@@ -1,80 +1,71 @@
-import React, { useState } from 'react';
-import { Home, Map, Vote, User } from 'lucide-react';
+import React, { useState } from "react";
 
 // Import screens
-import Onboarding1 from './components/screens/Onboarding1';
-import Onboarding2 from './components/screens/Onboarding2';
-import Onboarding3 from './components/screens/Onboarding3';
-import HomeScreen from './components/screens/HomeScreen';
-import MapScreen from './components/screens/MapScreen';
-import StopDetails from './components/screens/StopDetails';
-import WeekSchedule from './components/screens/WeekSchedule';
-import AlertSettings from './components/screens/AlertSettings';
-import AlertConfirm from './components/screens/AlertConfirm';
-import VoteHome from './components/screens/VoteHome';
-import VoteChoose from './components/screens/VoteChoose';
-import VoteConfirm from './components/screens/VoteConfirm';
-import VoteResults from './components/screens/VoteResults';
-import Profile from './components/screens/Profile';
-import FAQ from './components/screens/FAQ';
-import BottomNav from './components/BottomNav';
-import DesktopNav from './components/DesktopNav';
+import Onboarding1 from "./components/screens/Onboarding1";
+import HomeScreen from "./components/screens/HomeScreen";
+import MapScreen from "./components/screens/MapScreen";
+import StopDetails from "./components/screens/StopDetails";
+import WeekSchedule from "./components/screens/WeekSchedule";
+import AlertSettings from "./components/screens/AlertSettings";
+import AlertConfirm from "./components/screens/AlertConfirm";
+import VoteHome from "./components/screens/VoteHome";
+import VoteChoose from "./components/screens/VoteChoose";
+import VoteConfirm from "./components/screens/VoteConfirm";
+import VoteResults from "./components/screens/VoteResults";
+import Profile from "./components/screens/Profile";
+import FAQ from "./components/screens/FAQ";
+import BottomNav from "./components/BottomNav";
+import DesktopNav from "./components/DesktopNav";
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('onboarding1');
+  const [currentScreen, setCurrentScreen] = useState("onboarding1");
   const [showOnboarding, setShowOnboarding] = useState(true);
 
-  const navigate = (screen: string) => {
-    setCurrentScreen(screen);
-  };
+  const navigate = (screen: string) => setCurrentScreen(screen);
 
   const finishOnboarding = () => {
     setShowOnboarding(false);
-    setCurrentScreen('home');
+    setCurrentScreen("home");
   };
 
   const renderScreen = () => {
     switch (currentScreen) {
-      // Onboarding
-      case 'onboarding1':
-        return <Onboarding1 onNext={() => navigate('onboarding2')} />;
-      case 'onboarding2':
-        return <Onboarding2 onNext={() => navigate('onboarding3')} onSkip={finishOnboarding} />;
-      case 'onboarding3':
-        return <Onboarding3 onNext={finishOnboarding} onSkip={finishOnboarding} />;
-      
+      // ✅ Onboarding: étape 1 -> étape 3 (étape 2 supprimée)
+      case "onboarding1":
+        return <Onboarding1 onNext={() => navigate("onboarding3")} />;
+
       // Home
-      case 'home':
+      case "home":
         return <HomeScreen navigate={navigate} />;
-      
+
       // Map
-      case 'map':
+      case "map":
         return <MapScreen navigate={navigate} />;
-      case 'stop-details':
+      case "stop-details":
         return <StopDetails navigate={navigate} />;
-      case 'week-schedule':
+      case "week-schedule":
         return <WeekSchedule navigate={navigate} />;
-      case 'alert-settings':
+      case "alert-settings":
         return <AlertSettings navigate={navigate} />;
-      case 'alert-confirm':
+      case "alert-confirm":
         return <AlertConfirm navigate={navigate} />;
-      
+
       // Vote
-      case 'vote':
+      case "vote":
         return <VoteHome navigate={navigate} />;
-      case 'vote-choose':
+      case "vote-choose":
         return <VoteChoose navigate={navigate} />;
-      case 'vote-confirm':
+      case "vote-confirm":
         return <VoteConfirm navigate={navigate} />;
-      case 'vote-results':
+      case "vote-results":
         return <VoteResults navigate={navigate} />;
-      
+
       // Profile
-      case 'profile':
+      case "profile":
         return <Profile navigate={navigate} />;
-      case 'faq':
+      case "faq":
         return <FAQ navigate={navigate} />;
-      
+
       default:
         return <HomeScreen navigate={navigate} />;
     }
@@ -91,10 +82,8 @@ export default function App() {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col max-w-full overflow-hidden">
-        <div className="flex-1 overflow-y-auto">
-          {renderScreen()}
-        </div>
-        
+        <div className="flex-1 overflow-y-auto">{renderScreen()}</div>
+
         {/* Bottom Nav - Only on mobile */}
         {!showOnboarding && (
           <div className="lg:hidden">
