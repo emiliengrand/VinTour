@@ -24,6 +24,20 @@ let bus = null;
 let routes = [];
 let selected = null;
 
+// ---- UI / Map styling (Maps-like) ----
+const COLORS = {
+  primary: "#007782",
+  accent: "#ECC625",
+  black: "#000000",
+  white: "#FFFFFF",
+  walk:  "#000000",
+  bus:   "#007782",
+  halo:  "#FFFFFF",
+};
+
+let followMode = false; // quand true, la carte suit ta position
+
+
 const map = L.map("map", { zoomControl: false }).setView([50.43, 2.83], 12);
 L.control.zoom({ position: "bottomleft" }).addTo(map);
 
@@ -92,8 +106,16 @@ if (sheetHandle) sheetHandle.addEventListener("click", toggleSheet);
 
 function setUserMarker(lat, lon) {
   if (userMarker) userMarker.remove();
-  userMarker = L.circleMarker([lat, lon], { radius: 8 }).addTo(map).bindPopup("Tu es ici");
+  userMarker = L.circleMarker([lat, lon], {
+    radius: 8,
+    color: COLORS.primary,
+    weight: 3,
+    fillColor: COLORS.accent,
+    fillOpacity: 1,
+    className: "puck"
+  }).addTo(map).bindPopup("Tu es ici");
 }
+
 function setBusMarker(lat, lon, label) {
   if (busMarker) busMarker.remove();
   busMarker = L.marker([lat, lon]).addTo(map).bindPopup(label || "Tadao vin'tour");
@@ -110,11 +132,19 @@ function addLine(points, opts){
 }
 
 function addDot(lat, lon, label){
-  const m = L.circleMarker([lat, lon], { radius: 6 });
+  const m = L.circleMarker([lat, lon], {
+    radius: 6,
+    color: COLORS.primary,
+    weight: 3,
+    fillColor: COLORS.accent,
+    fillOpacity: 1,
+    className: "dot"
+  });
   if (label) m.bindPopup(label);
   routeLayers.addLayer(m);
   return m;
 }
+
 
 function fitRoute(){
   try{
@@ -290,7 +320,8 @@ async function drawStreetTrace(route){
         kind: "walk",
         coordsStr,
         fallbackPts: [[a.lat,a.lon],[b.lat,b.lon]],
-        opts: { dashArray: "6 8" } // walking dashed
+        opts: { dashArray: "6 10", color: COLORS.walk, weight: 4, opacity: 0.65 } // walk
+
       });
     }
 
@@ -306,7 +337,7 @@ async function drawStreetTrace(route){
         kind: "ride",
         coordsStr,
         fallbackPts: [[a.lat,a.lon],[b.lat,b.lon]],
-        opts: { weight: 5 } // bus thicker
+        opts: { weight: 6, color: COLORS.bus, opacity: 0.95 } // bus 
       });
     }
   }
@@ -321,6 +352,8 @@ async function drawStreetTrace(route){
       addLine(t.fallbackPts, t.opts);
     }
   }
+
+  
 
   // Add markers (dedupe)
   const seen = new Set();
