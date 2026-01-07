@@ -378,3 +378,10 @@ html, body{
 button, input, select, textarea{
   font-family: inherit;
 }
+
+@media (min-width: 980px){
+  .maps-top{
+    left: calc(14px + 420px + 14px); /* marge gauche + largeur sheet + espace */
+    right: 14px;
+  }
+}
