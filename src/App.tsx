@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 // Import screens
 import Onboarding1 from "./components/screens/Onboarding1";
+
 import HomeScreen from "./components/screens/HomeScreen";
 import MapScreen from "./components/screens/MapScreen";
 import StopDetails from "./components/screens/StopDetails";
@@ -14,6 +15,7 @@ import VoteConfirm from "./components/screens/VoteConfirm";
 import VoteResults from "./components/screens/VoteResults";
 import Profile from "./components/screens/Profile";
 import FAQ from "./components/screens/FAQ";
+
 import BottomNav from "./components/BottomNav";
 import DesktopNav from "./components/DesktopNav";
 
@@ -30,9 +32,9 @@ export default function App() {
 
   const renderScreen = () => {
     switch (currentScreen) {
-      // ✅ Onboarding: étape 1 -> étape 3 (étape 2 supprimée)
+      // ✅ Only onboarding step left: Onboarding1 -> Home
       case "onboarding1":
-        return <Onboarding1 onNext={() => navigate("onboarding3")} />;
+        return <Onboarding1 onNext={finishOnboarding} />;
 
       // Home
       case "home":
