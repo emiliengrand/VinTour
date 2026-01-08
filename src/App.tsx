@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 // Import screens
 import Onboarding1 from "./components/screens/Onboarding1";
-
 import HomeScreen from "./components/screens/HomeScreen";
 import MapScreen from "./components/screens/MapScreen";
 import StopDetails from "./components/screens/StopDetails";
@@ -23,6 +22,8 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState("onboarding1");
   const [showOnboarding, setShowOnboarding] = useState(true);
 
+  const isOnboarding = showOnboarding && currentScreen === "onboarding1";
+
   const navigate = (screen: string) => setCurrentScreen(screen);
 
   const finishOnboarding = () => {
@@ -32,15 +33,12 @@ export default function App() {
 
   const renderScreen = () => {
     switch (currentScreen) {
-      // ✅ Only onboarding step left: Onboarding1 -> Home
       case "onboarding1":
         return <Onboarding1 onNext={finishOnboarding} />;
 
-      // Home
       case "home":
         return <HomeScreen navigate={navigate} />;
 
-      // Map
       case "map":
         return <MapScreen navigate={navigate} />;
       case "stop-details":
@@ -52,7 +50,6 @@ export default function App() {
       case "alert-confirm":
         return <AlertConfirm navigate={navigate} />;
 
-      // Vote
       case "vote":
         return <VoteHome navigate={navigate} />;
       case "vote-choose":
@@ -62,7 +59,6 @@ export default function App() {
       case "vote-results":
         return <VoteResults navigate={navigate} />;
 
-      // Profile
       case "profile":
         return <Profile navigate={navigate} />;
       case "faq":
@@ -73,22 +69,46 @@ export default function App() {
     }
   };
 
+  // Hauteur nav : 72px + safe area iPhone (si présent)
+  const navHeight = 72;
+
   return (
     <div className="w-full h-screen bg-white flex flex-col">
-      {/* Desktop Top Nav - Hidden on mobile */}
-      {!showOnboarding && (
+      {!isOnboarding && (
         <div className="hidden lg:block">
           <DesktopNav currentScreen={currentScreen} navigate={navigate} />
         </div>
       )}
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col max-w-full overflow-hidden">
-        <div className="flex-1 overflow-y-auto">{renderScreen()}</div>
+      {/* Zone viewport */}
+      <div className="flex-1 relative min-h-0">
+        {/* Contenu scrollable : on réserve l’espace de la nav en bas */}
+        <div
+          className="absolute inset-0 overflow-y-auto"
+          style={{
+            paddingBottom: isOnboarding ? 0 : `calc(${navHeight}px + env(safe-area-inset-bottom, 0px))`,
+          }}
+        >
+          {renderScreen()}
+        </div>
 
-        {/* Bottom Nav - Only on mobile */}
-        {!showOnboarding && (
-          <div className="lg:hidden">
+        {/* Nav mobile FIXED en bas d'écran (pas bas de page) */}
+        {!isOnboarding && (
+          <div
+            className="lg:hidden fixed left-0 right-0 z-[99999]"
+            style={{
+              position: "fixed",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 99999,
+              height: `calc(${navHeight}px + env(safe-area-inset-bottom, 0px))`,
+              paddingBottom: "env(safe-area-inset-bottom, 0px)",
+              background: "white",
+              borderTop: "1px solid rgba(0,0,0,0.08)",
+              boxShadow: "0 -8px 20px rgba(0,0,0,0.06)",
+            }}
+          >
             <BottomNav currentScreen={currentScreen} navigate={navigate} />
           </div>
         )}

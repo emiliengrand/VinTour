@@ -19,7 +19,6 @@ export default function Profile({ navigate }: ProfileProps) {
         <button onClick={() => navigate('home')} className="p-1 lg:hidden">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl lg:text-2xl font-bold">Paramètres</h1>
       </div>
 
       <div className="p-6 lg:px-12 lg:py-8 max-w-4xl mx-auto space-y-6 lg:space-y-8">
@@ -39,7 +38,7 @@ export default function Profile({ navigate }: ProfileProps) {
                     <Icon className="w-5 h-5 text-gray-600" />
                     <span className="font-medium">{item.label}</span>
                     {item.count !== null && (
-                      <span className="px-2 py-0.5 bg-cyan-500 text-white text-xs rounded-full">
+                      <span className="px-2 py-0.5 bg-[#007782] text-white text-xs rounded-full">
                         {item.count}
                       </span>
                     )}
@@ -57,14 +56,14 @@ export default function Profile({ navigate }: ProfileProps) {
           
           <button className="w-full p-4 lg:p-5 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-between hover:border-cyan-500 transition-colors">
             <span className="font-medium lg:text-lg">Notifications</span>
-            <div className="w-12 h-6 bg-cyan-500 rounded-full relative">
+            <div className="w-12 h-6 bg-[#007782] rounded-full relative">
               <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
             </div>
           </button>
           
           <button className="w-full p-4 lg:p-5 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-between hover:border-cyan-500 transition-colors">
             <span className="font-medium lg:text-lg">Localisation</span>
-            <div className="w-12 h-6 bg-cyan-500 rounded-full relative">
+            <div className="w-12 h-6 bg-[#007782] rounded-full relative">
               <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
             </div>
           </button>

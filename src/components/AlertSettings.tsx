@@ -53,7 +53,7 @@ export default function AlertSettings({ navigate }: AlertSettingsProps) {
                 onClick={() => setRadius(r)}
                 className={`flex-1 py-3 rounded-lg border font-medium transition ${
                   radius === r
-                    ? 'bg-cyan-500 text-white border-cyan-500'
+                    ? 'bg-[#007782] text-white border-[#007782]'
                     : 'border-gray-300 text-gray-700'
                 }`}
               >
@@ -81,7 +81,7 @@ export default function AlertSettings({ navigate }: AlertSettingsProps) {
                 onClick={() => toggleTimeSlot(slot.id)}
                 className={`flex-1 py-3 rounded-lg border font-medium transition ${
                   timeSlot.includes(slot.id)
-                    ? 'bg-cyan-500 text-white border-cyan-500'
+                    ? 'bg-[#007782] text-white border-[#007782]'
                     : 'border-gray-300 text-gray-700'
                 }`}
               >

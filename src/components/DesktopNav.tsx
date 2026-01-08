@@ -36,15 +36,15 @@ export default function DesktopNav({ currentScreen, navigate }: DesktopNavProps)
                 onClick={() => navigate(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   active 
-                    ? 'bg-cyan-50 text-cyan-600' 
+                    ? 'bg-[#007782]-50 text-[#007782]' 
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
                 <Icon 
-                  className={`w-5 h-5 ${active ? 'text-cyan-600' : 'text-gray-600'}`} 
+                  className={`w-5 h-5 ${active ? 'text-[#007782]' : 'text-gray-600'}`} 
                   strokeWidth={active ? 2.5 : 2}
                 />
-                <span className={`font-medium ${active ? 'text-cyan-600' : 'text-gray-700'}`}>
+                <span className={`font-medium ${active ? 'text-[#007782]' : 'text-gray-700'}`}>
                   {tab.label}
                 </span>
               </button>
@@ -56,7 +56,7 @@ export default function DesktopNav({ currentScreen, navigate }: DesktopNavProps)
             onClick={() => navigate('profile')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
               currentScreen === 'profile' || currentScreen === 'faq'
-                ? 'bg-cyan-50 text-cyan-600' 
+                ? 'bg-[#007782]-50 text-[#007782]' 
                 : 'text-gray-700 hover:bg-gray-50'
             }`}
           >

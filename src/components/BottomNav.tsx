@@ -1,45 +1,56 @@
-import React from 'react';
-import { Home, Map, Vote } from 'lucide-react';
+import React from "react";
+import { Home, MapPin, Vote, Settings } from "lucide-react";
 
 interface BottomNavProps {
   currentScreen: string;
   navigate: (screen: string) => void;
 }
 
+const tabs = [
+  { key: "home", label: "Home", icon: Home },
+  { key: "map", label: "Carte", icon: MapPin },
+  { key: "vote", label: "Vote", icon: Vote },
+  { key: "profile", label: "Paramètres", icon: Settings },
+];
+
 export default function BottomNav({ currentScreen, navigate }: BottomNavProps) {
-  const tabs = [
-    { id: 'home', label: 'Accueil', icon: Home },
-    { id: 'map', label: 'Carte', icon: Map },
-    { id: 'vote', label: 'Vote', icon: Vote },
-  ];
-
-  const isActive = (tabId: string) => {
-    return currentScreen === tabId || currentScreen.startsWith(tabId);
-  };
-
   return (
-    <nav className="border-t border-gray-200 bg-white">
-      <div className="flex justify-around items-center h-16">
-        {tabs.map((tab) => {
-          const Icon = tab.icon;
-          const active = isActive(tab.id);
-          return (
-            <button
-              key={tab.id}
-              onClick={() => navigate(tab.id)}
-              className="flex flex-col items-center justify-center gap-1 flex-1 h-full"
-            >
-              <Icon 
-                className={`w-5 h-5 ${active ? 'text-cyan-500' : 'text-gray-400'}`} 
-                strokeWidth={active ? 2.5 : 2}
-              />
-              <span className={`text-xs ${active ? 'text-cyan-500 font-medium' : 'text-gray-400'}`}>
-                {tab.label}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+    <nav
+      aria-label="Navigation"
+      style={{
+        height: 72,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+      }}
+    >
+      {tabs.map((t) => {
+        const Icon = t.icon;
+        const active = currentScreen === t.key;
+
+        return (
+          <button
+            key={t.key}
+            onClick={() => navigate(t.key)}
+            style={{
+              background: "transparent",
+              border: "none",
+              padding: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 6,
+              color: active ? "#007782" : "#6b7280",
+              fontWeight: active ? 700 : 600,
+              fontSize: 12,
+              cursor: "pointer",
+            }}
+          >
+            <Icon size={22} />
+            <span>{t.label}</span>
+          </button>
+        );
+      })}
     </nav>
   );
 }
